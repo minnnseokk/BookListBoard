@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>도서 목록</title>
+    <title>도서 목록 게시판</title>
     <link rel="stylesheet" href="/css/bookBoardList.css" />
 </head>
 <body>
     <div class="container">
-        <h2>도서 목록</h2>
+        <h2 class="mainTitle">도서 목록 게시판</h2>
         <form id="frm" method="post" action="/book/insertBook.do">
             <table class="book_list">
                 <colgroup>
@@ -28,6 +28,8 @@
                     <tr th:if="${#lists.size(list)} > 0" th:each="book, stat : ${list}">
                         <td th:text="${stat.index + 1}"></td>
                         <td class="title">
+                        	<!-- 책 이미지 -->
+                            <img th:src="${book.imageUrl}" alt="책 이미지" style="width: 30%; height: auto;" />
                             <a href="/book/openBookDetail.do?bookId="
                                th:attrappend="href=${book.bookId}"
                                th:text="${book.title}">

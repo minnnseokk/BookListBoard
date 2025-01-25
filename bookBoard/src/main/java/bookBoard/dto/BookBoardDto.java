@@ -11,4 +11,6 @@ public class BookBoardDto {
 	private String publishedDate;
 	private String isbn;
 	private String description;
+	// 이미지 정보를 조인해서 가져온 데이터
+	private String imageUrl;
 }
