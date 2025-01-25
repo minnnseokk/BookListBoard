@@ -3,16 +3,21 @@
 <mapper namespace="bookBoard.mapper.BookBoardMapper">
     <select id="selectBookBoardList" resultType="bookBoard.dto.BookBoardDto">
         SELECT 
-            book_id AS bookId,
-            title,
-            author,
-            publisher,
-            DATE_FORMAT(published_date, '%Y.%m.%d') AS publishedDate,
-            isbn,
-            description
+            b.book_id AS bookId,
+            b.title,
+            b.author,
+            b.publisher,
+            b.published_date AS publishedDate,
+            b.isbn,
+            b.description,
+            <!-- 조인으로 받아온 북 이미지 -->
+            bi.image_url AS imageUrl
+        <!-- 책정보에 대한 b와 북이미지에대한 bi로 조인함 -->
         FROM 
-            Books
+            Books b
+        LEFT JOIN
+        	BookImages bi ON b.book_id=bi.book_id
         ORDER BY 
-            book_id DESC
+            b.book_id DESC
     </select>
 </mapper>
