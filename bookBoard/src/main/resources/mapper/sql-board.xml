@@ -31,4 +31,13 @@
         values 
             (#{bookId}, #{imageUrl}, now())
     </insert>
+    
+    <!-- 책 상세정보 select문 -->
+    <select id="openBookDetail" parameterType="int" resultType="bookBoard.dto.BookBoardDto">
+    	select b.book_id, b.title, b.author, b.publisher, b.published_date, b.isbn, b.description,
+    		<!-- 서브쿼리문을 사용해서 imageUrl 값을 가져와보자 -->
+    		(SELECT bi.image_url FROM BookImages bi WHERE bi.book_id = b.book_id LIMIT 1) AS image_url
+    	from books b
+    	where book_id = #{bookId}
+    </select>
 </mapper>

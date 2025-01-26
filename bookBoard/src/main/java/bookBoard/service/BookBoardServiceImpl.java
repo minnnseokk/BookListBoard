@@ -17,22 +17,28 @@ import bookBoard.mapper.BookBoardMapper;
 public class BookBoardServiceImpl implements BookBoardService{
 	// db를 관리해줄 매퍼
 	@Autowired
-	private BookBoardMapper boardMapper; 
+	private BookBoardMapper bookMapper; 
 	// 책 조회 메서드
 	@Override
 	public List<BookBoardDto> selectBookBoardList(){
-		return boardMapper.selectBookBoardList();
+		return bookMapper.selectBookBoardList();
 	}	
 	// 책 추가 메서드
 	public void insertBook(BookBoardDto bookDto, String imageUrl) {
 	        // 책 정보를 DB에 저장
-	        boardMapper.insertBook(bookDto);
+		bookMapper.insertBook(bookDto);
 	        // 책 ID를 가져옴
 	        long bookId = bookDto.getBookId(); // insert 후, bookId가 자동 생성된 경우
 	        // 사용자가 입력한 이미지 URL 저장
 	        if (imageUrl != null && !imageUrl.isEmpty()) {
-	            boardMapper.insertBookImage(bookId, imageUrl); // 사용자가 입력한 URL 저장
+	        	bookMapper.insertBookImage(bookId, imageUrl); // 사용자가 입력한 URL 저장
 	        }
+	}
+	
+	// 책 상세정보 페이지 메서드
+	@Override
+	public BookBoardDto openBookDetail(int bookId) {
+		return bookMapper.openBookDetail(bookId);
 	}
 }
 

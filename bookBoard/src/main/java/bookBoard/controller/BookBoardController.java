@@ -45,6 +45,16 @@ public class BookBoardController {
         
         return "redirect:/bookBoard/openBookList.do";
     }
-	
+
+    // 책 상세페이지 보여주는 컨트롤러
+    @GetMapping("/bookBoard/openBookDetail.do")
+    public ModelAndView openBookDetail(@RequestParam("bookId") int bookId) throws Exception{
+    	BookBoardDto bookDto = bookBoardService.openBookDetail(bookId);
+
+    	ModelAndView mv = new ModelAndView("/bookBoard/bookDetail");
+    	mv.addObject("book",bookDto);
+    	
+    	return mv;
+    }
 }
 

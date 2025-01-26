@@ -68,10 +68,22 @@ caption {display:none; width:0; height:0; margin-top:-1px; overflow:hidden; visi
 }
 .book_list tbody td a {display:inline-block}
 
+.bookImage{ 
+	text-align:center; 
+	padding-left:20px;
+	width: auto; /* 원하는 고정 너비 설정 */
+    height: auto; /* 원하는 고정 높이 설정 */
+    margin: 50px auto;
+    padding: 15px;
+    object-fit: cover; /* 이미지 비율을 유지하며 영역을 채우기 */
+    border: 1px solid gray;
+    
+}
 .book_detail {width:100%; border-top:2px solid #252525; border-bottom:1px solid #ccc; border-collapse:collapse;}
-.book_detail tbody input {width:100%;}
+.book_detail tbody input {width:50%;}
 .book_detail tbody th {text-align:left; background:#f7f7f7; color:#3b3a3a; vertical-align:middle; text-align: center;}
-.book_detail tbody th, .board_detail tbody td {padding:10px 15px; border-bottom:1px solid #ccc;}
+.book_detail tbody th, .book_detail tbody td {padding:10px 15px; border-bottom:1px solid #ccc;}
+.book_detail tbody td { width:100% }
 .book_detail tbody textarea {width:100%; min-height:170px}
 
 .btn {margin:5px; padding:5px 11px; color:#fff !important; display:inline-block; background-color:#7D7F82; vertical-align:middle; border-radius:0 !important; cursor:pointer; border:none;}

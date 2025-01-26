@@ -11,4 +11,6 @@ public interface BookBoardService {
 	List<BookBoardDto> selectBookBoardList();
 
 	void insertBook(BookBoardDto bookDto, String imageUrl);
+
+	BookBoardDto openBookDetail(int bookId);
 }
