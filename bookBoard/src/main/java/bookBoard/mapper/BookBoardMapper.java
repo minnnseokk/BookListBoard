@@ -14,4 +14,6 @@ public interface BookBoardMapper {
 	void insertBook(BookBoardDto bookDto);
 
 	void insertBookImage(@Param("bookId") long bookId, @Param("imageUrl") String imageUrl);
+
+	BookBoardDto openBookDetail(int bookId);
 }
