@@ -4,10 +4,38 @@
 @import url(http://cdn.jsdelivr.net/font-nanum/1.0/nanumbarungothic/nanumbarungothic.css);
 .mainTitle{
 	text-align: center;
-	font-size: 2rem;
+	font-size: 3rem;
 	font-weight: 900;
-	margin: 3rem 0;
+	margin: 2rem 0;
 }
+.book-info {
+    display: flex; /* Flexbox 사용 */
+    align-items: flex-end; /* 수직 정렬 */
+}
+.book-info img {
+    margin-right: 10px; /* 이미지와 제목 사이 여백 추가 */
+}
+.book_detail td {
+    padding: 10px; /* 각 셀의 안쪽 여백 */
+    border-bottom: 1px solid #ccc; /* 셀 아래에 줄 추가 */
+}
+textarea {
+    width: 100%; /* 텍스트 영역을 전체 너비로 설정 */
+    height: 100px; /* 높이 조정 */
+    padding: 10px; /* 내부 여백 추가 */
+    box-sizing: border-box; /* 내부 여백을 포함하여 너비 계산 */
+    vertical-align: top; /* 텍스트를 위쪽에 정렬 */
+}
+.book_detail tr:last-child td {
+    border-bottom: none; /* 마지막 행의 아래 테두리 제거 */
+}
+
+/* 각 행의 간격을 더 주고 싶다면 */
+.book_detail tr {
+    margin-bottom: 10px; /* 각 행 사이의 간격 */
+}
+
+
 html{overflow:scorll;}
 html, body, div, h1, h2, a, form, table, caption, thead, tbody, tr, th, td, submit {
 	margin:0; outline:0; border:0; padding:0; font-size:100%; vertical-align:baseline; background:transparent;
@@ -28,10 +56,16 @@ caption {display:none; width:0; height:0; margin-top:-1px; overflow:hidden; visi
 .book_list {width:100%; border-top:2px solid #252525; border-bottom:1px solid #ccc; margin:15px 0; border-collapse: collapse;}
 .book_list thead th:first-child {background-image:none;}
 .book_list thead th {border-bottom:1px solid #ccc; padding:13px 0; color:#3b3a3a; text-align: center; vertical-align:middle;}
-.book_list tbody td {border-top:1px solid #ccc; padding:13px 0; text-align:center; vertical-align:middle;}
+.book_list tbody td {border-top:1px solid #ccc; padding:13px 0; text-align:center; vertical-align:middle; font-size:1.5rem; font-weight:bold;}
 .book_list tbody tr:first-child td {border:none;}
 .book_list tbody tr:hover{background:#ffff99;} 
-.book_list tbody td.title {text-align:left; padding-left:20px;}
+.book_list tbody td.title {
+	text-align:left; 
+	padding-left:20px;
+	width: 150px; /* 원하는 고정 너비 설정 */
+    height: 200px; /* 원하는 고정 높이 설정 */
+    object-fit: cover; /* 이미지 비율을 유지하며 영역을 채우기 */
+}
 .book_list tbody td a {display:inline-block}
 
 .book_detail {width:100%; border-top:2px solid #252525; border-bottom:1px solid #ccc; border-collapse:collapse;}
