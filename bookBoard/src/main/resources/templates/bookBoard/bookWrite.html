@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>도서 목록 게시판</title>
+    <link rel="stylesheet" href="/css/bookBoardList.css" />
+</head>
+<body>
+    <div class="container">
+        <h2>책 추가</h2>
+        <form id="frm" method="post" action="/bookBoard/insertBook.do"enctype="multipart/form-data">
+	        <table class="book_detail">
+	            <tr>
+	               <td>책 제목</td>
+	               <td><input type="text" id="title" name="title" /></td>
+	            </tr>
+	            <tr>
+	               <td>ISBN 번호</td>
+	               <td><input type="text" id="isbn" name="isbn" /></td>
+	            </tr>
+	            <tr>
+	               <td>저자</td>
+	               <td><input type="text" id="author" name="author" /></td>
+	            </tr>
+	            <tr>
+	               <td>출간일</td>
+	               <td><input type="text" id="publishedDate" name="publishedDate" /></td>
+	            </tr>
+	            <tr>
+	               <td>출판사</td>
+	               <td><input type="text" id="publisher" name="publisher" /></td>
+	            </tr>
+	            <tr>
+	               <td>책 이미지를 Url을 입력해주세요</td>
+	               <td>
+		                <input type="text" id="imageUrl" name="imageUrl" placeholder="이미지 URL을 입력하세요" />
+	               <div id="imagePreview"></div>
+        		   </td>
+	            </tr>
+	            <tr>
+	               <td>책 상세정보</td>
+	               <td colspan="2"><textarea id="description" name="description"></textarea></td>	               
+	            </tr>
+	        </table>
+	        <input type="submit" id="submit" value="저장" class="btn" />
+	    </form>
+    </div>
+</body>
+</html>

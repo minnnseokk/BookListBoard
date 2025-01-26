@@ -8,7 +8,8 @@
 <body>
     <div class="container">
         <h2 class="mainTitle">도서 목록 게시판</h2>
-        <form id="frm" method="post" action="/book/insertBook.do">
+        <form id="frm" method="post" action="/bookBoard/insertBook.do">
+        	        <a href="/bookBoard/openBookWrite.do" class="btn">책 추가하기</a>
             <table class="book_list">
                 <colgroup>
                     <col width="15%" />
@@ -28,12 +29,14 @@
                     <tr th:if="${#lists.size(list)} > 0" th:each="book, stat : ${list}">
                         <td th:text="${stat.index + 1}"></td>
                         <td class="title">
-                        	<!-- 책 이미지 -->
-                            <img th:src="${book.imageUrl}" alt="책 이미지" style="width: 30%; height: auto;" />
-                            <a href="/book/openBookDetail.do?bookId="
-                               th:attrappend="href=${book.bookId}"
-                               th:text="${book.title}">
-                            </a>
+                        	<div class="book-info">
+	                        	<!-- 책 이미지 -->
+	                            <img th:src="${book.imageUrl}" alt="책 이미지" style="width: 30%; height: auto;" />
+	                            <a href="/bookBoard/openBookDetail.do?bookId="
+	                               th:attrappend="href=${book.bookId}"
+	                               th:text="${book.title}">
+	                            </a>
+	                        </div>
                         </td>
                         <td th:text="${book.author}"></td>
                         <td th:text="${book.publishedDate}"></td>
@@ -44,7 +47,6 @@
                 </tbody>
             </table>
         </form>
-        <a href="/book/openBookWrite.do" class="btn">책 추가하기</a>
     </div>
 </body>
 </html>

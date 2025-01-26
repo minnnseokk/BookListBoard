@@ -20,4 +20,15 @@
         ORDER BY 
             b.book_id DESC
     </select>
+    <insert id="insertBook" parameterType="bookBoard.dto.BookBoardDto" useGeneratedKeys="true" keyProperty="bookId">
+        INSERT INTO books (title, isbn, author, published_date, publisher, description, created_at, updated_at)
+        VALUES (#{title}, #{isbn}, #{author}, #{publishedDate}, #{publisher}, #{description}, NOW(), NOW())
+    </insert>
+    <!-- 한개의 이미지를 저장하는 방식 -->
+    <insert id="insertBookImage" parameterType="bookBoard.dto.BookBoardImgDto">
+        insert into bookImages
+            (book_id, image_url, created_at)
+        values 
+            (#{bookId}, #{imageUrl}, now())
+    </insert>
 </mapper>
