@@ -7,11 +7,19 @@
 </head>
 <body>
     <div class="container">
+	  <form id="frm" method="post">
+	  	<input type="hidden" name="bookId" th:value="${book.bookId}" />
         <h2>책 상세정보</h2>
         <div class="bookImage">
-        	<img th:src="${book.imageUrl}" alt="책 이미지" style="width: 30%; height: auto;" /></td>
+        	<img th:src="${book.imageUrl}" alt="책 이미지" style="width: 30%; height: auto;" />
+        	<br>
+        	<p>수정할 이미지 url주소 입력</p>
+        	<input type="text" id="imageUrl" name="imageUrl" th:value="${book.imageUrl}"/>
         </div>
-        <form id="frm" method="post">
+        <input type="button" id="list" class="btn" value="목록으로" />
+        <input type="button" id="update" class="btn" value="수정하기" />
+        <input type="button" id="delete" class="btn" value="삭제하기" />
+
             <table class="book_detail">
                 <colgroup>
                     <col width="15%" />
@@ -26,30 +34,50 @@
                 <tr>
                    <th>책 이름</th>
                    <td colspan="3"><input type="text" id="title" name="title" th:value="${book.title}"/></td>
-	               
                 </tr>
                 <tr>
                    <th>책 ISBN</th>
-                   <td th:text="${book.isbn}"></td>               
+                   <td colspan="3"><input type="number" id="isbn" name="isbn" th:value="${book.isbn}"/></td>             
                 </tr>
                 <tr>
                    <th>저자</th>
-                   <td th:text="${book.author}"></td>
+                   <td colspan="3"><input type="text" id="author" name="author" th:value="${book.author}"/></td>
                 </tr>
                 <tr>
                    <th>출판사</th>
-                   <td th:text="${book.publisher}"></td>
+                   <td colspan="3"><input type="text" id="publisher" name="publisher" th:value="${book.publisher}"/></td>
                 </tr>
                 <tr>
                    <th>출판일</th>
-                   <td th:text="${book.publishedDate}"></td>
+                   <td colspan="3"><input type="text" id="publishedDate" name="publishedDate" th:value="${book.publishedDate}"/></td>
                 </tr>
                 <tr>
                    <th>상세내용</th>
                    <td colspan="4"><textarea id="description" name="description" th:text="${book.description}"></textarea></td>                
                 </tr>
             </table>
-        </form>
+            
+      </form>
     </div>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+        $(function() {
+        	$("#list").on("click", function() {
+        		location.href = "openBookList.do";
+        	});
+        	$("#update").on("click", function() {
+                   let frm = $("#frm")[0];
+                   frm.action = "updateBook.do";
+                   frm.submit();
+               });
+			$("#delete").on("click", function() {
+				let frm = $("#frm")[0];
+                   frm.action = "deleteBook.do";
+                   frm.submit();
+			});
+        });
+</script>
+
 </html>

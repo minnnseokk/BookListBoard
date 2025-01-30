@@ -40,4 +40,24 @@
     	from books b
     	where book_id = #{bookId}
     </select>
+    
+    <!-- 수정, 삭제기능 -->
+    <update id="updateBook" parameterType="bookBoard.dto.BookBoardDto">
+	    UPDATE books b
+	    LEFT JOIN bookImages bi ON b.book_id = bi.book_id
+	    SET 
+	        b.title = #{title},
+	        b.isbn = #{isbn},
+	        b.author = #{author},
+	        b.publisher = #{publisher},
+	        b.published_date = #{publishedDate},
+	        b.description = #{description},
+	        bi.image_url = #{imageUrl}
+	    WHERE b.book_id = #{bookId}
+	</update>
+	<delete id="deleteBook" parameterType="bookBoard.dto.BookBoardDto">
+		DELETE FROM books
+		WHERE book_id = #{bookId}
+	</delete>
+	
 </mapper>

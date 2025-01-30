@@ -56,5 +56,21 @@ public class BookBoardController {
     	
     	return mv;
     }
+    
+    // 수정 요청을 처리할 메서드 
+    @PostMapping("/bookBoard/updateBook.do")
+    public String updateBoook(BookBoardDto bookDto) throws Exception {
+        bookBoardService.updateBook(bookDto);
+        return "redirect:/bookBoard/openBookList.do";
+    }
+    
+    // 삭제 요청을 처리할 메서드
+    @PostMapping("/bookBoard/deleteBook.do")
+    public String deleteBook(@RequestParam("bookId") int bookId) throws Exception {
+        bookBoardService.deleteBook(bookId);
+        return "redirect:/bookBoard/openBookList.do";
+    }    
+    
+    
 }
 

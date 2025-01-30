@@ -13,4 +13,8 @@ public interface BookBoardService {
 	void insertBook(BookBoardDto bookDto, String imageUrl);
 
 	BookBoardDto openBookDetail(int bookId);
+
+	void updateBook(BookBoardDto bookDto);
+
+	void deleteBook(int bookId);
 }

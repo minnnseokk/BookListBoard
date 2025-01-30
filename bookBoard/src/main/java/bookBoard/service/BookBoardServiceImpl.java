@@ -40,6 +40,21 @@ public class BookBoardServiceImpl implements BookBoardService{
 	public BookBoardDto openBookDetail(int bookId) {
 		return bookMapper.openBookDetail(bookId);
 	}
+	
+	// 책 수정 메서드
+	@Override
+	public void updateBook(BookBoardDto bookDto) {
+		bookMapper.updateBook(bookDto);
+	}
+	
+	// 책 삭제 메서드
+	@Override
+	public void deleteBook(int bookId) {
+		BookBoardDto bookDto = new BookBoardDto();
+		bookDto.setBookId(bookId);
+		bookMapper.deleteBook(bookDto);
+	}
+	
 }
 
 
