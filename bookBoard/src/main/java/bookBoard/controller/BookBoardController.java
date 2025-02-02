@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import bookBoard.dto.BookBoardDto;
+import bookBoard.dto.BookDetailImgDto;
 import bookBoard.service.BookBoardService;
 
 @Controller
@@ -51,7 +53,12 @@ public class BookBoardController {
     public ModelAndView openBookDetail(@RequestParam("bookId") int bookId) throws Exception{
     	BookBoardDto bookDto = bookBoardService.openBookDetail(bookId);
 
+    	// 이미지 리스트 가져오기
+        List<BookDetailImgDto> imageList = bookBoardService.selectBookImageList(bookId);
+        System.out.println("이미지 목록 - " + imageList);
+        
     	ModelAndView mv = new ModelAndView("/bookBoard/bookDetail");
+    	mv.addObject("images",imageList);
     	mv.addObject("book",bookDto);
     	
     	return mv;
@@ -59,8 +66,8 @@ public class BookBoardController {
     
     // 수정 요청을 처리할 메서드 
     @PostMapping("/bookBoard/updateBook.do")
-    public String updateBoook(BookBoardDto bookDto) throws Exception {
-        bookBoardService.updateBook(bookDto);
+    public String updateBook(BookBoardDto bookDto, MultipartHttpServletRequest request) throws Exception {
+        bookBoardService.updateBook(bookDto, request);
         return "redirect:/bookBoard/openBookList.do";
     }
     
