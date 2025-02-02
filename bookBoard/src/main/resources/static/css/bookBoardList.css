@@ -69,8 +69,7 @@ caption {display:none; width:0; height:0; margin-top:-1px; overflow:hidden; visi
 .book_list tbody td a {display:inline-block}
 
 .bookImage{ 
-	text-align:center; 
-	padding-left:20px;
+	text-align:center;
 	width: auto; /* 원하는 고정 너비 설정 */
     height: auto; /* 원하는 고정 높이 설정 */
     margin: 50px auto;

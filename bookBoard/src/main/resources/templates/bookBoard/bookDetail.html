@@ -11,16 +11,15 @@
     <div class="container">
 	  <form id="frm" method="post" enctype="multipart/form-data">
 	  	<input type="hidden" name="bookId" th:value="${book.bookId}" />
-        <h2>책 상세정보</h2>
-        <div class="bookImage">
+        <h2>도서 상세정보</h2>
+        <div class="bookImage" style="padding-top:50px;">
         	<img th:src="${book.imageUrl}" alt="책 이미지" style="width: 30%; height: auto;" />
-        	<br>
         	<p>수정할 이미지 url주소 입력</p>
         	<input type="text" id="imageUrl" name="imageUrl" th:value="${book.imageUrl}"/>
 	        <div style="text-align:center;">
 	    </div>
-        <div class="bookImage">
-	       	<h1>도서 상세 이미지</h1>
+        <div class="bookImage" style="width: 60%;">
+	       	<h1>상세 이미지</h1>
 			<div th:if="${images.size() == 0}">
 				<br>
 			    <h3>상세 이미지가 없습니다.</h3>
