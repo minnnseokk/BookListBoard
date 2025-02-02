@@ -60,4 +60,21 @@
 		WHERE book_id = #{bookId}
 	</delete>
 	
+	<!-- 도서 상세 이미지들 추가하는 페이지 -->
+	<insert id="insertBookImageList" parameterType= "java.util.List">
+        insert into bookDetailImages
+            (book_id, original_file_name, stored_file_path, file_size, created_at)
+        values 
+        <foreach collection="list" item="item" separator=",">
+            (#{item.bookId}, #{item.originalFileName}, #{item.storedFilePath}, #{item.fileSize}, now())
+        </foreach>
+    </insert>
+    <!-- 도서 이미지 조회 -->
+	<select id="selectBookImageList" parameterType="long" resultType="bookBoard.dto.BookDetailImgDto">
+	    select image_id, book_id, original_file_name, stored_file_path, format(round(file_size/1024), 0) as file_size
+	    from bookDetailImages
+	    where book_id = #{bookId}
+	</select>
+    
+	
 </mapper>

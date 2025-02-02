@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import bookBoard.dto.BookBoardDto;
+import bookBoard.dto.BookDetailImgDto;
 
 @Mapper
 public interface BookBoardMapper {
@@ -20,4 +21,8 @@ public interface BookBoardMapper {
 	void updateBook(BookBoardDto bookDto);
 
 	void deleteBook(BookBoardDto bookDto);
+
+	void insertBookImageList(List<BookDetailImgDto> fileInfoList);
+
+	List<BookDetailImgDto> selectBookImageList(@Param("bookId") long bookId);
 }
